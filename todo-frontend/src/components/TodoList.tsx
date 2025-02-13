@@ -34,19 +34,21 @@ const TodoList = () => {
   return (
     <div className="max-w-md mx-auto mt-10 space-y-4">
       <div className="flex gap-2">
-        <Input
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
-          placeholder="Add a new todo"
-        />
-        <Button
-          onClick={() => {
-            addTodoMutation.mutate(newTodo);
-            setNewTodo("");
-          }}
-        >
-          Add
-        </Button>
+        <form onSubmit={(e) => e.preventDefault()} className="flex gap-2">
+          <Input
+            value={newTodo}
+            onChange={(e) => setNewTodo(e.target.value)}
+            placeholder="Add a new todo"
+          />
+          <Button
+            onClick={() => {
+              addTodoMutation.mutate(newTodo);
+              setNewTodo("");
+            }}
+          >
+            Add
+          </Button>
+        </form>
       </div>
 
       {todos.map((todo) => (
